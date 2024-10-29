@@ -147,47 +147,48 @@
         </div>
         
 
-    <div id="about" class="flex flex-col md:flex-row items-center bg-background p-8 rounded-lg shadow-lg fade-in">
-        <div class="md:w-1/2 relative">
-            <img src="images/profile.jpg" alt="Profile Picture" class="rounded-lg shadow-lg" />
-            <div class="absolute top-0 right-0 bg-blue-600 text-white p-2 rounded-full">
-                <span>+</span>
-            </div>
+        <div id="about" class="flex flex-col md:flex-row items-center bg-background p-8 rounded-lg shadow-lg fade-in">
+            <div class="md:w-1/2 relative">
+                <img src="images/profile.jpg" alt="Profile Picture" class="rounded-lg shadow-lg" />
+                <div class="absolute top-0 right-0 bg-blue-600 text-white p-2 rounded-full">
+                    <span>+</span>
+                </div>
+            </div>  
+            <div class="w-full md:w-1/2 md:pl-8">
+                <h2 class="text-xl font-bold text-primary">ABOUT ME</h2>
+                <h1 class="text-3xl font-semibold text-foreground my-2">I AM AVAILABLE FOR <span class="text-primary">FULL-STACK</span> DEVELOPMENT PROJECTS</h1>
+                <p class="text-muted-foreground mb-4">
+                    I am a passionate full-stack developer with a keen interest in building efficient and scalable web applications.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <!-- Projects Completed Card -->
+                    <div class="bg-blue-500 text-white p-4 rounded-lg shadow shadow-custom scale-on-hover flex items-center">
+                        <i class="fas fa-check-circle text-3xl mr-3"></i>
+                        <div>
+                            <h3 class="text-xl font-bold">3+</h3>
+                            <p class="text-white">Projects Completed</p>
+                        </div>
+                    </div>
+                    <!-- Years of Experience Card -->
+                    <div class="bg-green-500 text-white p-4 rounded-lg shadow shadow-custom scale-on-hover flex items-center">
+                        <i class="fas fa-calendar-alt text-3xl mr-3"></i>
+                        <div>
+                            <h3 class="text-xl font-bold">1+</h3>
+                            <p class="text-white">Years of Experience</p>
+                        </div>
+                    </div>
+                    <!-- Technologies Mastered Card -->
+                    <div class="bg-purple-500 text-white p-4 rounded-lg shadow shadow-custom scale-on-hover flex items-center">
+                        <i class="fas fa-cogs text-3xl mr-3"></i>
+                        <div>
+                            <h3 class="text-xl font-bold">5+</h3>
+                            <p class="text-white">Technologies Mastered</p>
+                        </div>
+                    </div>
+                </div>            
+            </div>  
         </div>
-        <div class="w-full md:w-1/2 md:pl-8">
-            <h2 class="text-xl font-bold text-primary">ABOUT ME</h2>
-            <h1 class="text-3xl font-semibold text-foreground my-2">I AM AVAILABLE FOR <span class="text-primary">FULL-STACK</span> DEVELOPMENT PROJECTS</h1>
-            <p class="text-muted-foreground mb-4">
-                I am a passionate full-stack developer with a keen interest in building efficient and scalable web applications.
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <!-- Projects Completed Card -->
-                <div class="bg-blue-500 text-white p-4 rounded-lg shadow shadow-custom scale-on-hover flex items-center">
-                    <i class="fas fa-check-circle text-3xl mr-3"></i>
-                    <div>
-                        <h3 class="text-xl font-bold">3+</h3>
-                        <p class="text-white">Projects Completed</p>
-                    </div>
-                </div>
-                <!-- Years of Experience Card -->
-                <div class="bg-green-500 text-white p-4 rounded-lg shadow shadow-custom scale-on-hover flex items-center">
-                    <i class="fas fa-calendar-alt text-3xl mr-3"></i>
-                    <div>
-                        <h3 class="text-xl font-bold">1+</h3>
-                        <p class="text-white">Years of Experience</p>
-                    </div>
-                </div>
-                <!-- Technologies Mastered Card -->
-                <div class="bg-purple-500 text-white p-4 rounded-lg shadow shadow-custom scale-on-hover flex items-center">
-                    <i class="fas fa-cogs text-3xl mr-3"></i>
-                    <div>
-                        <h3 class="text-xl font-bold">5+</h3>
-                        <p class="text-white">Technologies Mastered</p>
-                    </div>
-                </div>
-            </div>            
-        </div>  
-        
+                
 <!-- Skills Section -->
 <div id="skills" class="md:w-1/2 md:pl-8 mt-10 mb-10"> <!-- Added mb-10 for margin-bottom -->
     <h2 class="text-xl font-bold text-primary">MY SKILLS</h2>
@@ -203,8 +204,8 @@
             </h3>
         </div>
         <div class="bg-yellow-100 p-4 rounded-lg shadow shadow-custom scale-on-hover animate-fade-in">
-            <h3 class="text-lg font-semibold text-primary flex items-center">
-                <i class="fab fa-js-square mr-2" style="color: #F7DF1E;"></i> JavaScript
+            <h3 class="text-base md:text-lg font-semibold text-primary flex items-center">
+                <i class="fab fa-js-square mr-2 text-2xl md:text-3xl" style="color: #F7DF1E;"></i> JavaScript
             </h3>
         </div>
         <div class="bg-blue-200 p-4 rounded-lg shadow shadow-custom scale-on-hover animate-fade-in">
@@ -226,10 +227,10 @@
 </div>
 
 <!-- Projects Section -->
+<h2 class="text-3xl font-bold mb-6">MY WORK</h2>
+<h3 class="text-xl font-semibold mb-4">RECENT PROJECTS</h3>
 <section id="projects" class="py-10 bg-gradient-to-b from-blue-900 to-blue-700 overflow-hidden mt-10 rounded-lg"> <!-- Added rounded-lg for rounded edges -->
     <div class="container mx-auto text-white fade-in">
-        <h2 class="text-3xl font-bold mb-6">MY WORK</h2>
-        <h3 class="text-xl font-semibold mb-4">RECENT PROJECTS</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- Project 1 -->
             <a href="https://atobatelehome-properties-capstone-pro-atobatele-ameers-projects.vercel.app" target="_blank" class="bg-black rounded-lg shadow-lg overflow-hidden transition-transform duration-300 transform hover:scale-105">
