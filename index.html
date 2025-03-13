@@ -7,6 +7,27 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        .cv-options {
+            display: flex;
+            gap: 10px;
+          }
+          
+          .cv-button {
+            padding: 10px 20px;
+            background-color: rgb(49, 49, 230);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+          }
+          
+          .cv-button:hover {
+            background-color: #1607ee;
+            transform: scale(1.05);
+            transition: transform 0.5s ease;
+          }
+          
         /* Custom styles for animations */
         .fade-in {
             opacity: 0;
@@ -114,6 +135,10 @@
                     I believe that every obstacle presents an opportunity for growth; not all experiences may seem beneficial at first, but with the right mindset, even the toughest moments can lead to valuable insights.
                     I am learning and utilizing technologies like React, Next.js, and Django to build efficient and robust applications. Eager to work across frontend and backend environments, I strive to deliver seamless user experiences.
                 </p>
+                <div class="cv-options">
+                    <a href="/Atobatele_Ameer_Resume (1).pdf" target="_blank" class="cv-button">Open CV</a>
+                    <a href="/Atobatele_Ameer_Resume (1).pdf" download class="cv-button">Download CV</a>
+                  </div>                  
                 <a href="#contact">
                 <button class="mt-6 bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 rounded-lg shadow-lg transition duration-300 transform hover:scale-105">GET IN TOUCH</button>
                 </a>
