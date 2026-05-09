@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ameer | Software Developer Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Glassmorphism Navigation */
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hero Background Glow */
+        .hero-glow {
+            background: radial-gradient(circle at 50% 50%, rgba(79, 70, 229, 0.15) 0%, rgba(15, 23, 42, 0) 50%);
+        }
+
+        /* Custom Card Hover Effects */
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: #6366f1;
+            box-shadow: 0 10px 25px -10px rgba(99, 102, 241, 0.4);
+        }
+
+        .project-card:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Smooth scrollbar for modern browsers */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6366f1;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-200 antialiased">
+
+    <!-- Navigation Bar -->
+    <header class="fixed w-full top-0 z-50 glass-nav">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-extrabold tracking-tighter text-white">
+                AMEER<span class="text-indigo-500">.</span>
+            </div>
+            
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex space-x-8 font-medium text-sm uppercase tracking-widest">
+                <a href="#home" class="hover:text-indigo-400 transition-colors">Home</a>
+                <a href="#about" class="hover:text-indigo-400 transition-colors">About</a>
+                <a href="#skills" class="hover:text-indigo-400 transition-colors">Skills</a>
+                <a href="#projects" class="hover:text-indigo-400 transition-colors">Projects</a>
+                <a href="#contact" class="hover:text-indigo-400 transition-colors">Contact</a>
+            </nav>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+                <i id="menu-icon" class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-6 py-8 flex flex-col space-y-6 text-center">
+            <a href="#home" class="text-lg font-semibold hover:text-indigo-400 transition">HOME</a>
+            <a href="#about" class="text-lg font-semibold hover:text-indigo-400 transition">ABOUT</a>
+            <a href="#skills" class="text-lg font-semibold hover:text-indigo-400 transition">SKILLS</a>
+            <a href="#projects" class="text-lg font-semibold hover:text-indigo-400 transition">PROJECTS</a>
+            <a href="#contact" class="text-lg font-semibold hover:text-indigo-400 transition">CONTACT</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20 hero-glow">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6 order-2 md:order-1">
+                <h2 class="text-indigo-400 font-bold tracking-widest uppercase text-sm">Available for Full-Stack Projects</h2>
+                <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight">
+                    HEY! I'M AMEER. <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 leading-tight">I'm a Software Developer</span>
+                </h1>
+                <p class="text-slate-400 text-lg max-w-xl leading-relaxed">
+                    I build responsive, scalable, and user-friendly applications. I believe that even the toughest moments lead to valuable insights. I utilize React, Next.js, and Django to deliver seamless digital experiences.
+                </p>
+                
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="#contact" class="bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-3 rounded-xl font-bold transition transform hover:-translate-y-1 shadow-lg shadow-indigo-500/20">
+                        GET IN TOUCH
+                    </a>
+                    <div class="flex gap-2">
+                        <a href="/Atobatele_Ameer_Resume (1).pdf" target="_blank" class="bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 rounded-xl font-bold transition border border-slate-700">Open CV</a>
+                        <a href="/Atobatele_Ameer_Resume (1).pdf" download class="bg-slate-800 hover:bg-slate-700 text-white p-3 rounded-xl transition border border-slate-700">
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Social Media Links -->
+                <div class="flex space-x-6 pt-8">
+                    <a href="https://github.com/ameer112-746dgd" target="_blank" class="text-slate-400 hover:text-white transition-all text-2xl"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/atobatele-ameer-743a91312" target="_blank" class="text-slate-400 hover:text-white transition-all text-2xl"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com/132DdIGITALGUY" target="_blank" class="text-slate-400 hover:text-white transition-all text-2xl"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/d.digital.guy/" target="_blank" class="text-slate-400 hover:text-white transition-all text-2xl"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:atobateleameer204@gmail.com" class="text-slate-400 hover:text-white transition-all text-2xl"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+            
+            <!-- Hero Image -->
+            <div class="order-1 md:order-2 relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
+                <div class="relative bg-slate-900 rounded-2xl overflow-hidden shadow-2xl">
+                    <img src="images/profile.jpg" alt="Ameer" class="w-full h-auto grayscale hover:grayscale-0 transition duration-700">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-slate-800/30">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <img src="images/profile.jpg" alt="About Ameer" class="rounded-2xl shadow-xl w-full">
+                    <div class="absolute -bottom-6 -right-6 bg-indigo-600 p-8 rounded-2xl hidden md:block shadow-2xl">
+                        <p class="text-4xl font-bold text-white">1+</p>
+                        <p class="text-indigo-200 text-sm">Year Experience</p>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <h2 class="text-indigo-400 font-bold uppercase tracking-widest text-sm">About Me</h2>
+                    <h3 class="text-3xl font-bold text-white leading-tight uppercase">I am available for <span class="text-indigo-400">Full-Stack</span> Development projects</h3>
+                    <p class="text-slate-400 leading-relaxed text-lg">
+                        I am a passionate developer with a keen interest in building efficient and scalable web applications. My mindset is built on constant learning and embracing challenges as opportunities for growth.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                        <div class="p-6 bg-slate-800 border border-slate-700 rounded-xl hover:border-indigo-500 transition shadow-lg">
+                            <i class="fas fa-check-circle text-indigo-500 text-3xl mb-3"></i>
+                            <h4 class="font-bold text-white text-2xl">3+</h4>
+                            <p class="text-slate-400 text-sm uppercase tracking-wide">Projects Completed</p>
+                        </div>
+                        <div class="p-6 bg-slate-800 border border-slate-700 rounded-xl hover:border-indigo-500 transition shadow-lg">
+                            <i class="fas fa-cogs text-indigo-500 text-3xl mb-3"></i>
+                            <h4 class="font-bold text-white text-2xl">5+</h4>
+                            <p class="text-slate-400 text-sm uppercase tracking-wide">Tech Mastered</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-indigo-400 font-bold uppercase tracking-widest text-sm mb-2">My Skills</h2>
+                <h3 class="text-4xl font-bold text-white">Technologies I Use</h3>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Skill Cards -->
+                <div class="skill-card bg-slate-800/50 border border-slate-700 p-6 rounded-2xl transition-all duration-300 flex flex-col items-center text-center">
+                    <i class="fab fa-html5 text-5xl text-orange-500 mb-4"></i>
+                    <h4 class="text-lg font-bold text-white">HTML5</h4>
+                </div>
+                <div class="skill-card bg-slate-800/50 border border-slate-700 p-6 rounded-2xl transition-all duration-300 flex flex-col items-center text-center">
+                    <i class="fab fa-css3-alt text-5xl text-blue-500 mb-4"></i>
+                    <h4 class="text-lg font-bold text-white">CSS3</h4>
+                </div>
+                <div class="skill-card bg-slate-800/50 border border-slate-700 p-6 rounded-2xl transition-all duration-300 flex flex-col items-center text-center">
+                    <i class="fab fa-js text-5xl text-yellow-400 mb-4"></i>
+                    <h4 class="text-lg font-bold text-white">JavaScript</h4>
+                </div>
+                <div class="skill-card bg-slate-800/50 border border-slate-700 p-6 rounded-2xl transition-all duration-300 flex flex-col items-center text-center">
+                    <i class="fab fa-react text-5xl text-cyan-400 mb-4"></i>
+                    <h4 class="text-lg font-bold text-white">React / Next</h4>
+                </div>
+                <div class="skill-card bg-slate-800/50 border border-slate-700 p-6 rounded-2xl transition-all duration-300 flex flex-col items-center text-center">
+                    <i class="fab fa-python text-5xl text-blue-400 mb-4"></i>
+                    <h4 class="text-lg font-bold text-white">Python</h4>
+                </div>
+                <div class="skill-card bg-slate-800/50 border border-slate-700 p-6 rounded-2xl transition-all duration-300 flex flex-col items-center text-center">
+                    <span class="text-5xl block mb-4 font-bold text-white">🅓</span>
+                    <h4 class="text-lg font-bold text-white">Django</h4>
+                </div>
+                <div class="skill-card bg-slate-800/50 border border-slate-700 p-6 rounded-2xl transition-all duration-300 flex flex-col items-center text-center">
+                    <i class="fab fa-git-alt text-5xl text-red-500 mb-4"></i>
+                    <h4 class="text-lg font-bold text-white">Git</h4>
+                </div>
+                <div class="skill-card bg-slate-800/50 border border-slate-700 p-6 rounded-2xl transition-all duration-300 flex flex-col items-center text-center">
+                    <i class="fas fa-code text-5xl text-indigo-400 mb-4"></i>
+                    <h4 class="text-lg font-bold text-white">Tailwind</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 bg-slate-800/30">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+                <div>
+                    <h2 class="text-indigo-400 font-bold uppercase tracking-widest text-sm">Portfolio</h2>
+                    <h3 class="text-4xl font-bold text-white">Recent Projects</h3>
+                </div>
+                <p class="text-slate-400 max-w-md">Highlighting some of my best work in web design and app development.</p>
+            </div>
+
+            <!-- All 4 Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project 1: Real Estate -->
+                <a href="https://atobatelehome-properties-capstone-pro-atobatele-ameers-projects.vercel.app" target="_blank" class="project-card group bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 transition-all duration-300 shadow-lg hover:border-indigo-500">
+                    <div class="overflow-hidden h-64">
+                        <img src="images/estateimage.png" alt="Real Estate Project" class="w-full h-full object-cover transition duration-500">
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="text-2xl font-bold text-white group-hover:text-indigo-400 transition">Website Design</h4>
+                            <i class="fas fa-desktop text-indigo-400"></i>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed">A modern, responsive real estate platform designed for property management and user engagement.</p>
+                        <div class="mt-6 flex items-center text-indigo-400 text-sm font-bold uppercase tracking-widest">
+                            View Website <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 2: Haus of Aura -->
+                <a href="https://haus-of-aura.com/" target="_blank" class="project-card group bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 transition-all duration-300 shadow-lg hover:border-indigo-500">
+                    <div class="overflow-hidden h-64">
+                        <img src="images/makeup-booking.png" alt="Makeup Booking" class="w-full h-full object-cover transition duration-500">
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="text-2xl font-bold text-white group-hover:text-indigo-400 transition">Makeup Booking System</h4>
+                            <i class="fas fa-calendar-check text-indigo-400"></i>
+                        </div>
+                        <p class="text-slate-400 text-sm leading-relaxed">Full-stack booking platform where clients book appointments and receive automated receipts/notifications.</p>
+                        <div class="mt-6 flex items-center text-indigo-400 text-sm font-bold uppercase tracking-widest">
+                            View Platform <i class="fas fa-arrow-right ml-2 text-xs"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 3: Rewards Summary -->
+                <a href="https://sammyhennadesign.onrender.com/" target="_blank" class="bg-black rounded-lg shadow-lg overflow-hidden transition-transform duration-300 transform hover:scale-105 mb-4">
+                    <!-- Added mb-4 for bottom margin -->
+                    
+                    <img src="images/sammy.png" alt="Henna Booking Website" class="w-full h-48 object-cover" />
+                    
+                    <div class="p-4">
+                        <h4 class="text-lg font-semibold">
+                            Henna Booking Website <i class="fab fa-whatsapp"></i>
+                        </h4>
+                        <p class="text-zinc-600">
+                            A modern henna service website where clients can book appointments directly via WhatsApp.
+                        </p>
+                    </div>
+
+                    <div class="p-4">
+                        <h4 class="text-lg font-semibold">
+                            Custom Henna Services <i class="fas fa-hand-sparkles"></i>
+                        </h4>
+                        <p class="text-zinc-600">
+                            Elegant bridal and event henna designs with quick and easy appointment scheduling.
+                        </p>
+                    </div>                    
+                </a>
+
+                <!-- Project 4: Interactive Quiz -->
+                <a href="https://www.gsnaturopathyandphysicaltherapyclinic.com/" target="_blank" class="bg-black rounded-lg shadow-lg overflow-hidden transition-transform duration-300 transform hover:scale-105 mb-4">
+                    <!-- Added mb-4 for bottom margin -->
+                    
+                    <img src="images/therapy.png" alt="Therapy Appointment Website" class="w-full h-48 object-cover" />
+                    
+                    <div class="p-4">
+                        <h4 class="text-lg font-semibold">
+                            Therapy Appointment Website <i class="fas fa-user-md"></i>
+                        </h4>
+                        <p class="text-zinc-600">
+                            A professional therapy clinic website where clients can easily book appointments online.
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="bg-slate-950 pt-24 pb-12 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-indigo-400 font-bold uppercase tracking-widest text-sm mb-4">Let's Connect</h2>
+            <h3 class="text-4xl md:text-5xl font-bold text-white mb-8 leading-tight uppercase">Ready to start <br>your next project?</h3>
+            
+            <a href="mailto:atobateleameer204@gmail.com" class="text-2xl md:text-3xl font-bold text-white hover:text-indigo-400 transition-colors underline decoration-indigo-500 decoration-2 underline-offset-8">
+                atobateleameer204@gmail.com
+            </a>
+
+            <!-- Footer Socials -->
+            <div class="flex justify-center space-x-6 my-16">
+                <a href="https://www.linkedin.com/in/atobatele-ameer-743a91312" target="_blank" class="w-14 h-14 bg-slate-900 border border-slate-800 flex items-center justify-center rounded-full hover:bg-indigo-600 hover:border-indigo-600 transition-all duration-300 group">
+                    <i class="fab fa-linkedin-in text-white text-xl"></i>
+                </a>
+                <a href="https://github.com/ameer112-746dgd" target="_blank" class="w-14 h-14 bg-slate-900 border border-slate-800 flex items-center justify-center rounded-full hover:bg-indigo-600 hover:border-indigo-600 transition-all duration-300 group">
+                    <i class="fab fa-github text-white text-xl"></i>
+                </a>
+                <a href="https://twitter.com/132DdIGITALGUY" target="_blank" class="w-14 h-14 bg-slate-900 border border-slate-800 flex items-center justify-center rounded-full hover:bg-indigo-600 hover:border-indigo-600 transition-all duration-300 group">
+                    <i class="fab fa-twitter text-white text-xl"></i>
+                </a>
+                <a href="https://www.facebook.com/d.digital.guy" target="_blank" class="w-14 h-14 bg-slate-900 border border-slate-800 flex items-center justify-center rounded-full hover:bg-indigo-600 hover:border-indigo-600 transition-all duration-300 group">
+                    <i class="fab fa-facebook-f text-white text-xl"></i>
+                </a>
+            </div>
+
+            <p class="text-slate-600 text-sm tracking-widest uppercase">
+                &copy; <span id="year"></span> AMEER. ALL RIGHTS RESERVED.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Auto-update the Copyright Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // 2. Mobile Menu Toggle Logic
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (mobileMenu.classList.contains('hidden')) {
+                menuIcon.classList.replace('fa-times', 'fa-bars');
+            } else {
+                menuIcon.classList.replace('fa-bars', 'fa-times');
+            }
+        });
+
+        // 3. Close mobile menu when a link is clicked
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.replace('fa-times', 'fa-bars');
+            });
+        });
+    </script>
+</body>
+</html>
