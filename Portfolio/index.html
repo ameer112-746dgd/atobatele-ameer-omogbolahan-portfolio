@@ -38,7 +38,7 @@
             transform: scale(1.08);
         }
 
-        /* Smooth scrollbar for modern browsers */
+        /* Smooth scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -63,7 +63,6 @@
                 AMEER<span class="text-indigo-500">.</span>
             </div>
             
-            <!-- Desktop Nav Links -->
             <nav class="hidden md:flex space-x-8 font-medium text-sm uppercase tracking-widest">
                 <a href="#home" class="hover:text-indigo-400 transition-colors">Home</a>
                 <a href="#about" class="hover:text-indigo-400 transition-colors">About</a>
@@ -72,13 +71,11 @@
                 <a href="#contact" class="hover:text-indigo-400 transition-colors">Contact</a>
             </nav>
 
-            <!-- Mobile Menu Toggle Button -->
             <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
                 <i id="menu-icon" class="fas fa-bars text-2xl"></i>
             </button>
         </div>
 
-        <!-- Mobile Menu Navigation -->
         <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-6 py-8 flex flex-col space-y-6 text-center">
             <a href="#home" class="text-lg font-semibold hover:text-indigo-400 transition">HOME</a>
             <a href="#about" class="text-lg font-semibold hover:text-indigo-400 transition">ABOUT</a>
@@ -98,7 +95,7 @@
                     <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 leading-tight">I'm a Software Developer</span>
                 </h1>
                 <p class="text-slate-400 text-lg max-w-xl leading-relaxed">
-                    I build responsive, scalable, and user-friendly applications. I believe that even the toughest moments lead to valuable insights. I utilize React, Next.js, and Django to deliver seamless digital experiences.
+                    I build responsive, scalable, and user-friendly applications. I utilize React, Next.js, and Django to deliver seamless digital experiences.
                 </p>
                 
                 <div class="flex flex-wrap gap-4 pt-4">
@@ -113,7 +110,6 @@
                     </div>
                 </div>
 
-                <!-- Social Media Links -->
                 <div class="flex space-x-6 pt-8">
                     <a href="https://github.com/ameer112-746dgd" target="_blank" class="text-slate-400 hover:text-white transition-all text-2xl"><i class="fab fa-github"></i></a>
                     <a href="https://www.linkedin.com/in/atobatele-ameer-743a91312" target="_blank" class="text-slate-400 hover:text-white transition-all text-2xl"><i class="fab fa-linkedin"></i></a>
@@ -123,7 +119,6 @@
                 </div>
             </div>
             
-            <!-- Hero Image -->
             <div class="order-1 md:order-2 relative group">
                 <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
                 <div class="relative bg-slate-900 rounded-2xl overflow-hidden shadow-2xl">
@@ -149,18 +144,18 @@
                     <h2 class="text-indigo-400 font-bold uppercase tracking-widest text-sm">About Me</h2>
                     <h3 class="text-3xl font-bold text-white leading-tight uppercase">I am available for <span class="text-indigo-400">Full-Stack</span> Development projects</h3>
                     <p class="text-slate-400 leading-relaxed text-lg">
-                        I am a passionate developer with a keen interest in building efficient and scalable web applications. My mindset is built on constant learning and embracing challenges as opportunities for growth.
+                        I am a passionate developer with a keen interest in building efficient and scalable web applications. My mindset is built on constant learning and embracing challenges.
                     </p>
                     
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
                         <div class="p-6 bg-slate-800 border border-slate-700 rounded-xl hover:border-indigo-500 transition shadow-lg">
                             <i class="fas fa-check-circle text-indigo-500 text-3xl mb-3"></i>
-                            <h4 class="font-bold text-white text-2xl">3+</h4>
+                            <h4 class="font-bold text-white text-2xl">5+</h4>
                             <p class="text-slate-400 text-sm uppercase tracking-wide">Projects Completed</p>
                         </div>
                         <div class="p-6 bg-slate-800 border border-slate-700 rounded-xl hover:border-indigo-500 transition shadow-lg">
                             <i class="fas fa-cogs text-indigo-500 text-3xl mb-3"></i>
-                            <h4 class="font-bold text-white text-2xl">5+</h4>
+                            <h4 class="font-bold text-white text-2xl">8+</h4>
                             <p class="text-slate-400 text-sm uppercase tracking-wide">Tech Mastered</p>
                         </div>
                     </div>
@@ -178,7 +173,6 @@
             </div>
             
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <!-- Skill Cards -->
                 <div class="skill-card bg-slate-800/50 border border-slate-700 p-6 rounded-2xl transition-all duration-300 flex flex-col items-center text-center">
                     <i class="fab fa-html5 text-5xl text-orange-500 mb-4"></i>
                     <h4 class="text-lg font-bold text-white">HTML5</h4>
@@ -226,123 +220,153 @@
                 <p class="text-slate-400 max-w-md">Highlighting some of my best work in web design and app development.</p>
             </div>
 
-            <!-- All 4 Projects Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Project 1: Real Estate -->
                 <a href="https://atobatelehome-properties-capstone-pro-atobatele-ameers-projects.vercel.app" target="_blank" class="project-card group bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 transition-all duration-300 shadow-lg hover:border-indigo-500">
-                    <div class="overflow-hidden h-64">
-                        <img src="images/estateimage.png" alt="Real Estate Project" class="w-full h-full object-cover transition duration-500">
-                    </div>
+                    <div class="overflow-hidden h-64"><img src="images/estateimage.png" alt="Real Estate Project" class="w-full h-full object-cover transition duration-500 group-hover:scale-105"></div>
                     <div class="p-8">
-                        <div class="flex justify-between items-start mb-2">
-                            <h4 class="text-2xl font-bold text-white group-hover:text-indigo-400 transition">Website Design</h4>
-                            <i class="fas fa-desktop text-indigo-400"></i>
-                        </div>
-                        <p class="text-slate-400 text-sm leading-relaxed">A modern, responsive real estate platform designed for property management and user engagement.</p>
-                        <div class="mt-6 flex items-center text-indigo-400 text-sm font-bold uppercase tracking-widest">
-                            View Website <i class="fas fa-arrow-right ml-2 text-xs"></i>
-                        </div>
+                        <div class="flex justify-between items-start mb-2"><h4 class="text-2xl font-bold text-white group-hover:text-indigo-400 transition">Real Estate Platform</h4><i class="fas fa-home text-indigo-400"></i></div>
+                        <p class="text-slate-400 text-sm leading-relaxed">A modern responsive real estate website for property listings and user browsing experience.</p>
+                        <div class="mt-4 flex flex-wrap gap-2"><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">React</span><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">JavaScript</span><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Tailwind</span></div>
+                        <div class="mt-6 flex items-center text-indigo-400 text-sm font-bold uppercase tracking-widest">View Project <i class="fas fa-arrow-right ml-2 text-xs"></i></div>
                     </div>
                 </a>
 
-                <!-- Project 2: Haus of Aura -->
+                <!-- Project 2: Makeup Booking -->
                 <a href="https://haus-of-aura.com/" target="_blank" class="project-card group bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 transition-all duration-300 shadow-lg hover:border-indigo-500">
-                    <div class="overflow-hidden h-64">
-                        <img src="images/makeup-booking.png" alt="Makeup Booking" class="w-full h-full object-cover transition duration-500">
-                    </div>
+                    <div class="overflow-hidden h-64"><img src="images/makeup-booking.png" alt="Makeup Booking" class="w-full h-full object-cover transition duration-500 group-hover:scale-105"></div>
                     <div class="p-8">
-                        <div class="flex justify-between items-start mb-2">
-                            <h4 class="text-2xl font-bold text-white group-hover:text-indigo-400 transition">Makeup Booking System</h4>
-                            <i class="fas fa-calendar-check text-indigo-400"></i>
-                        </div>
-                        <p class="text-slate-400 text-sm leading-relaxed">Full-stack booking platform where clients book appointments and receive automated receipts/notifications.</p>
-                        <div class="mt-6 flex items-center text-indigo-400 text-sm font-bold uppercase tracking-widest">
-                            View Platform <i class="fas fa-arrow-right ml-2 text-xs"></i>
-                        </div>
+                        <div class="flex justify-between items-start mb-2"><h4 class="text-2xl font-bold text-white group-hover:text-indigo-400 transition">Makeup Booking System</h4><i class="fas fa-calendar-check text-indigo-400"></i></div>
+                        <p class="text-slate-400 text-sm leading-relaxed">Full-stack booking platform with email notifications, automated receipts, and appointment scheduling.</p>
+                        <div class="mt-4 flex flex-wrap gap-2"><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">React</span><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Node.js</span><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Resend API</span></div>
+                        <div class="mt-6 flex items-center text-indigo-400 text-sm font-bold uppercase tracking-widest">View Platform <i class="fas fa-arrow-right ml-2 text-xs"></i></div>
                     </div>
                 </a>
 
-                <!-- Project 3: Rewards Summary -->
-                <a href="https://sammyhennadesign.onrender.com/" target="_blank" class="bg-black rounded-lg shadow-lg overflow-hidden transition-transform duration-300 transform hover:scale-105 mb-4">
-                    <!-- Added mb-4 for bottom margin -->
-                    
-                    <img src="images/sammy.png" alt="Henna Booking Website" class="w-full h-48 object-cover" />
-                    
-                    <div class="p-4">
-                        <h4 class="text-lg font-semibold">
-                            Henna Booking Website <i class="fab fa-whatsapp"></i>
-                        </h4>
-                        <p class="text-zinc-600">
-                            A modern henna service website where clients can book appointments directly via WhatsApp.
-                        </p>
+                <!-- Project 3: Henna Design -->
+                <a href="https://sammyhennadesign.onrender.com/" target="_blank" class="project-card group bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 transition-all duration-300 shadow-lg hover:border-indigo-500">
+                    <div class="overflow-hidden h-64"><img src="images/sammy.png" alt="Henna Booking Website" class="w-full h-full object-cover transition duration-500 group-hover:scale-105"></div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-2"><h4 class="text-2xl font-bold text-white group-hover:text-indigo-400 transition">Henna Booking Website</h4><i class="fas fa-hand-sparkles text-indigo-400"></i></div>
+                        <p class="text-slate-400 text-sm leading-relaxed">A modern booking system where clients schedule henna appointments via WhatsApp integration.</p>
+                        <div class="mt-4 flex flex-wrap gap-2"><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">React</span><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Node.js</span><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">JavaScript</span></div>
+                        <div class="mt-6 flex items-center text-indigo-400 text-sm font-bold uppercase tracking-widest">View Platform <i class="fas fa-arrow-right ml-2 text-xs"></i></div>
                     </div>
-
-                    <div class="p-4">
-                        <h4 class="text-lg font-semibold">
-                            Custom Henna Services <i class="fas fa-hand-sparkles"></i>
-                        </h4>
-                        <p class="text-zinc-600">
-                            Elegant bridal and event henna designs with quick and easy appointment scheduling.
-                        </p>
-                    </div>                    
                 </a>
 
-                <!-- Project 4: Interactive Quiz -->
-                <a href="https://www.gsnaturopathyandphysicaltherapyclinic.com/" target="_blank" class="bg-black rounded-lg shadow-lg overflow-hidden transition-transform duration-300 transform hover:scale-105 mb-4">
-                    <!-- Added mb-4 for bottom margin -->
-                    
-                    <img src="images/therapy.png" alt="Therapy Appointment Website" class="w-full h-48 object-cover" />
-                    
-                    <div class="p-4">
-                        <h4 class="text-lg font-semibold">
-                            Therapy Appointment Website <i class="fas fa-user-md"></i>
-                        </h4>
-                        <p class="text-zinc-600">
-                            A professional therapy clinic website where clients can easily book appointments online.
-                        </p>
+                <!-- Project 4: LUMINA -->
+                <a href="https://lumina-1-mnrq.onrender.com/" target="_blank" class="project-card group bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 transition-all duration-300 shadow-lg hover:border-indigo-500">
+                    <div class="overflow-hidden h-64"><img src="images/lumina-movie.png" alt="Lumina Movie App" class="w-full h-full object-cover transition duration-500 group-hover:scale-105"></div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-2"><h4 class="text-2xl font-bold text-white group-hover:text-indigo-400 transition">Lumina Movie Streaming</h4><i class="fas fa-film text-indigo-400"></i></div>
+                        <p class="text-slate-400 text-sm leading-relaxed">Full-stack movie streaming platform with admin dashboard, uploads, and Cloudinary media handling.</p>
+                        <div class="mt-4 flex flex-wrap gap-2"><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">React</span><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Node.js</span><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">MongoDB</span></div>
+                        <div class="mt-6 flex items-center text-indigo-400 text-sm font-bold uppercase tracking-widest">View App <i class="fas fa-arrow-right ml-2 text-xs"></i></div>
+                    </div>
+                </a>
+
+                <!-- Project 5: Therapy Clinic -->
+                <a href="https://www.gsnaturopathyandphysicaltherapyclinic.com/" target="_blank" class="project-card group bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 transition-all duration-300 shadow-lg hover:border-indigo-500">
+                    <div class="overflow-hidden h-64"><img src="images/therapy.png" alt="Therapy Website" class="w-full h-full object-cover transition duration-500 group-hover:scale-105"></div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-2"><h4 class="text-2xl font-bold text-white group-hover:text-indigo-400 transition">Therapy Booking Website</h4><i class="fas fa-user-md text-indigo-400"></i></div>
+                        <p class="text-slate-400 text-sm leading-relaxed">A professional therapy clinic platform where patients book appointments and manage sessions online.</p>
+                        <div class="mt-4 flex flex-wrap gap-2"><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">React</span><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Node.js</span><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">JavaScript</span></div>
+                        <div class="mt-6 flex items-center text-indigo-400 text-sm font-bold uppercase tracking-widest">View Website <i class="fas fa-arrow-right ml-2 text-xs"></i></div>
                     </div>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer / Contact -->
-    <footer id="contact" class="bg-slate-950 pt-24 pb-12 border-t border-slate-900">
-        <div class="max-w-7xl mx-auto px-6 text-center">
-            <h2 class="text-indigo-400 font-bold uppercase tracking-widest text-sm mb-4">Let's Connect</h2>
-            <h3 class="text-4xl md:text-5xl font-bold text-white mb-8 leading-tight uppercase">Ready to start <br>your next project?</h3>
-            
-            <a href="mailto:atobateleameer204@gmail.com" class="text-2xl md:text-3xl font-bold text-white hover:text-indigo-400 transition-colors underline decoration-indigo-500 decoration-2 underline-offset-8">
-                atobateleameer204@gmail.com
-            </a>
+    <!-- Updated Restyled Footer Section -->
+    <footer id="contact" class="relative bg-slate-950 pt-20 pb-10 overflow-hidden mt-32">
+        
+        <!-- Background: Cyber Glow -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-indigo-600/10 blur-[120px] rounded-full pointer-events-none"></div>
 
-            <!-- Footer Socials -->
-            <div class="flex justify-center space-x-6 my-16">
-                <a href="https://www.linkedin.com/in/atobatele-ameer-743a91312" target="_blank" class="w-14 h-14 bg-slate-900 border border-slate-800 flex items-center justify-center rounded-full hover:bg-indigo-600 hover:border-indigo-600 transition-all duration-300 group">
-                    <i class="fab fa-linkedin-in text-white text-xl"></i>
-                </a>
-                <a href="https://github.com/ameer112-746dgd" target="_blank" class="w-14 h-14 bg-slate-900 border border-slate-800 flex items-center justify-center rounded-full hover:bg-indigo-600 hover:border-indigo-600 transition-all duration-300 group">
-                    <i class="fab fa-github text-white text-xl"></i>
-                </a>
-                <a href="https://twitter.com/132DdIGITALGUY" target="_blank" class="w-14 h-14 bg-slate-900 border border-slate-800 flex items-center justify-center rounded-full hover:bg-indigo-600 hover:border-indigo-600 transition-all duration-300 group">
-                    <i class="fab fa-twitter text-white text-xl"></i>
-                </a>
-                <a href="https://www.facebook.com/d.digital.guy" target="_blank" class="w-14 h-14 bg-slate-900 border border-slate-800 flex items-center justify-center rounded-full hover:bg-indigo-600 hover:border-indigo-600 transition-all duration-300 group">
-                    <i class="fab fa-facebook-f text-white text-xl"></i>
-                </a>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            
+            <!-- Main Glass Card -->
+            <div class="relative bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-8 md:p-16 overflow-hidden">
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    
+                    <!-- Left Side: Status & Heading -->
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-widest mb-6">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                            </span>
+                            Available for new projects
+                        </div>
+
+                        <h3 class="text-5xl md:text-7xl font-black text-white leading-[0.9] tracking-tighter uppercase italic">
+                            Let's build <br> something <span class="text-indigo-500 not-italic">iconic.</span>
+                        </h3>
+                    </div>
+
+                    <!-- Right Side: CTA -->
+                    <div class="flex flex-col gap-8">
+                        <p class="text-slate-400 text-lg md:text-xl max-w-md leading-relaxed">
+                            I’m currently looking for new opportunities and collaborations. If you have a project in mind, let's make it happen.
+                        </p>
+
+                        <div class="group relative self-start">
+                            <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-500"></div>
+                            <a href="mailto:atobateleameer204@gmail.com" 
+                               class="relative flex items-center gap-4 bg-slate-900 border border-white/10 px-8 py-5 rounded-2xl text-white font-bold text-lg md:text-xl hover:bg-slate-800 transition-all">
+                                <span>atobateleameer204@gmail.com</span>
+                                <i class="fas fa-arrow-right -rotate-45 group-hover:rotate-0 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Row: Socials & Details -->
+                <div class="mt-16 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+                    
+                    <div class="flex items-center gap-3">
+                        <a href="https://www.linkedin.com/in/atobatele-ameer-743a91312" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-indigo-600 transition-all duration-300">
+                            <i class="fab fa-linkedin-in text-lg"></i>
+                        </a>
+                        <a href="https://github.com/ameer112-746dgd" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-indigo-600 transition-all duration-300">
+                            <i class="fab fa-github text-lg"></i>
+                        </a>
+                        <a href="https://twitter.com/132DdIGITALGUY" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-indigo-600 transition-all duration-300">
+                            <i class="fab fa-twitter text-lg"></i>
+                        </a>
+                        <a href="https://www.facebook.com/d.digital.guy" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-indigo-600 transition-all duration-300">
+                            <i class="fab fa-facebook-f text-lg"></i>
+                        </a>
+                    </div>
+
+                    <div class="text-right">
+                        <p class="text-xs font-medium uppercase tracking-[0.3em] text-slate-500 mb-1">
+                            © <span id="year"></span> Ameer. Portfolio
+                        </p>
+                        <p class="text-[10px] text-slate-700 uppercase tracking-widest font-bold">
+                            Lagos, NG — 6°27' N 3°23' E
+                        </p>
+                    </div>
+                </div>
             </div>
 
-            <p class="text-slate-600 text-sm tracking-widest uppercase">
-                &copy; <span id="year"></span> AMEER. ALL RIGHTS RESERVED.
-            </p>
+            <!-- Functional Back to Top Button -->
+            <div class="mt-8 text-center">
+                <a href="#home" class="inline-block text-[10px] text-slate-700 uppercase tracking-[0.5em] hover:text-indigo-400 transition-colors cursor-pointer">
+                    Back to top ↑
+                </a>
+            </div>
         </div>
     </footer>
 
     <script>
-        // 1. Auto-update the Copyright Year
+        // Update Year
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // 2. Mobile Menu Toggle Logic
+        // Mobile Menu
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         const menuIcon = document.getElementById('menu-icon');
@@ -356,7 +380,7 @@
             }
         });
 
-        // 3. Close mobile menu when a link is clicked
+        // Close mobile menu on link click
         const mobileLinks = mobileMenu.querySelectorAll('a');
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
