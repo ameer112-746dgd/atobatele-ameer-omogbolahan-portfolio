@@ -14,20 +14,33 @@
     <style>
         body { font-family: 'Inter', sans-serif; }
         
-        /* Glassmorphism Navigation */
         .glass-nav {
-            background: rgba(15, 23, 42, 0.85);
+            background: rgba(15, 23, 42, 0.9);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Hero Background Glow */
+        /* Floating Mobile Menu Animation */
+        #mobile-menu {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: translateY(-20px) scale(0.95);
+            opacity: 0;
+            pointer-events: none;
+        }
+        #mobile-menu.active {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #menu-icon { transition: transform 0.4s ease; }
+        .rotate-icon { transform: rotate(180deg); }
+
         .hero-glow {
-            background: radial-gradient(circle at 50% 50%, rgba(79, 70, 229, 0.15) 0%, rgba(15, 23, 42, 0) 50%);
+            background: radial-gradient(circle at 50% 50%, rgba(79, 70, 229, 0.15) 0%, rgba(15, 23, 42, 0) 60%);
         }
 
-        /* Custom Card Hover Effects */
         .skill-card:hover {
             transform: translateY(-5px);
             border-color: #6366f1;
@@ -35,128 +48,109 @@
         }
 
         .project-card:hover img {
-            transform: scale(1.08);
+            transform: scale(1.05);
         }
 
-        /* Smooth scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #6366f1;
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
     </style>
 </head>
-<body class="bg-slate-900 text-slate-200 antialiased">
+<body class="bg-slate-900 text-slate-200 antialiased overflow-x-hidden">
 
     <!-- Navigation Bar -->
     <header class="fixed w-full top-0 z-50 glass-nav">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-extrabold tracking-tighter text-white">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative">
+            <div class="text-xl md:text-2xl font-extrabold tracking-tighter text-white">
                 AMEER<span class="text-indigo-500">.</span>
             </div>
             
-            <nav class="hidden md:flex space-x-8 font-medium text-sm uppercase tracking-widest">
-                <a href="#home" class="hover:text-indigo-400 transition-colors">Home</a>
-                <a href="#about" class="hover:text-indigo-400 transition-colors">About</a>
-                <a href="#skills" class="hover:text-indigo-400 transition-colors">Skills</a>
-                <a href="#projects" class="hover:text-indigo-400 transition-colors">Projects</a>
-                <a href="#contact" class="hover:text-indigo-400 transition-colors">Contact</a>
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-8 font-medium text-xs uppercase tracking-widest text-slate-400">
+                <a href="#home" class="hover:text-white transition-colors">Home</a>
+                <a href="#about" class="hover:text-white transition-colors">About</a>
+                <a href="#skills" class="hover:text-white transition-colors">Skills</a>
+                <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+                <a href="#contact" class="hover:text-white transition-colors">Contact</a>
             </nav>
 
-            <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
-                <i id="menu-icon" class="fas fa-bars text-2xl"></i>
+            <!-- Mobile Toggle -->
+            <button id="menu-toggle" class="md:hidden text-white p-2 focus:outline-none">
+                <i id="menu-icon" class="fas fa-bars text-xl"></i>
             </button>
-        </div>
 
-        <div id="mobile-menu" class="hidden md:hidden bg-slate-900 border-t border-slate-800 px-6 py-8 flex flex-col space-y-6 text-center">
-            <a href="#home" class="text-lg font-semibold hover:text-indigo-400 transition">HOME</a>
-            <a href="#about" class="text-lg font-semibold hover:text-indigo-400 transition">ABOUT</a>
-            <a href="#skills" class="text-lg font-semibold hover:text-indigo-400 transition">SKILLS</a>
-            <a href="#projects" class="text-lg font-semibold hover:text-indigo-400 transition">PROJECTS</a>
-            <a href="#contact" class="text-lg font-semibold hover:text-indigo-400 transition">CONTACT</a>
+            <!-- Floating Mobile Menu (Doesn't cover full screen) -->
+            <div id="mobile-menu" class="absolute top-[calc(100%+1rem)] left-4 right-4 bg-slate-900/95 backdrop-blur-2xl border border-white/10 rounded-3xl p-6 flex flex-col space-y-4 text-center shadow-2xl shadow-indigo-500/20 md:hidden z-50">
+                <a href="#home" class="text-base font-semibold py-2 border-b border-white/5">HOME</a>
+                <a href="#about" class="text-base font-semibold py-2 border-b border-white/5">ABOUT</a>
+                <a href="#skills" class="text-base font-semibold py-2 border-b border-white/5">SKILLS</a>
+                <a href="#projects" class="text-base font-semibold py-2 border-b border-white/5">PROJECTS</a>
+                <a href="#contact" class="text-base font-bold text-indigo-400 py-2">CONTACT</a>
+            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center pt-20 hero-glow">
-        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-            <div class="space-y-6 order-2 md:order-1">
-                <h2 class="text-indigo-400 font-bold tracking-widest uppercase text-sm">Available for Full-Stack Projects</h2>
-                <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight">
-                    HEY! I'M AMEER. <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 leading-tight">I'm a Software Developer</span>
-                </h1>
-                <p class="text-slate-400 text-lg max-w-xl leading-relaxed">
-                    I build responsive, scalable, and user-friendly applications. I utilize React, Next.js, and Django to deliver seamless digital experiences.
-                </p>
-                
-                <div class="flex flex-wrap gap-4 pt-4">
-                    <a href="#contact" class="bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-3 rounded-xl font-bold transition transform hover:-translate-y-1 shadow-lg shadow-indigo-500/20">
-                        GET IN TOUCH
-                    </a>
-                    <div class="flex gap-2">
-                        <a href="/Atobatele_Ameer_Resume (1).pdf" target="_blank" class="bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 rounded-xl font-bold transition border border-slate-700">Open CV</a>
-                        <a href="/Atobatele_Ameer_Resume (1).pdf" download class="bg-slate-800 hover:bg-slate-700 text-white p-3 rounded-xl transition border border-slate-700">
-                            <i class="fas fa-download"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="flex space-x-6 pt-8">
-                    <a href="https://github.com/ameer112-746dgd" target="_blank" class="text-slate-400 hover:text-white transition-all text-2xl"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/atobatele-ameer-743a91312" target="_blank" class="text-slate-400 hover:text-white transition-all text-2xl"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://twitter.com/132DdIGITALGUY" target="_blank" class="text-slate-400 hover:text-white transition-all text-2xl"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/d.digital.guy/" target="_blank" class="text-slate-400 hover:text-white transition-all text-2xl"><i class="fab fa-instagram"></i></a>
-                    <a href="mailto:atobateleameer204@gmail.com" class="text-slate-400 hover:text-white transition-all text-2xl"><i class="fas fa-envelope"></i></a>
+    <section id="home" class="min-h-screen flex items-center pt-28 pb-12 hero-glow">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            
+            <!-- Profile Image (Top on mobile) -->
+            <div class="order-1 md:order-2 relative group max-w-sm mx-auto md:max-w-none">
+                <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-2xl blur opacity-25 group-hover:opacity-40 transition"></div>
+                <div class="relative bg-slate-900 rounded-2xl overflow-hidden shadow-2xl aspect-square md:aspect-auto">
+                    <img src="images/profile.jpg" alt="Ameer" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-700">
                 </div>
             </div>
-            
-            <div class="order-1 md:order-2 relative group">
-                <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-                <div class="relative bg-slate-900 rounded-2xl overflow-hidden shadow-2xl">
-                    <img src="images/profile.jpg" alt="Ameer" class="w-full h-auto grayscale hover:grayscale-0 transition duration-700">
+
+            <div class="order-2 md:order-1 text-center md:text-left space-y-6">
+                <h2 class="text-indigo-400 font-bold tracking-[0.2em] uppercase text-xs">Full-Stack Software Developer</h2>
+                <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight">
+                    HEY! I'M AMEER. <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">Building Digital Excellence.</span>
+                </h1>
+                <p class="text-slate-400 text-base md:text-lg max-w-xl leading-relaxed mx-auto md:mx-0">
+                    I build responsive, scalable, and user-friendly applications using React, Next.js, and Django.
+                </p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-4 pt-4">
+                    <a href="#contact" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-4 rounded-xl font-bold transition transform hover:-translate-y-1 text-center">GET IN TOUCH</a>
+                    <a href="#" class="w-full sm:w-auto bg-slate-800 hover:bg-slate-700 text-white px-8 py-4 rounded-xl font-bold transition border border-slate-700 text-center flex items-center justify-center gap-2">
+                        RESUME <i class="fas fa-download text-xs"></i>
+                    </a>
+                </div>
+                <div class="flex justify-center md:justify-start space-x-6 pt-8">
+                    <a href="https://github.com/ameer112-746dgd" class="text-slate-500 hover:text-white transition text-2xl"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/atobatele-ameer-743a91312" class="text-slate-500 hover:text-white transition text-2xl"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com/132DdIGITALGUY" class="text-slate-500 hover:text-white transition text-2xl"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-24 bg-slate-800/30">
+    <section id="about" class="py-20 bg-slate-800/20">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="relative">
-                    <img src="images/profile.jpg" alt="About Ameer" class="rounded-2xl shadow-xl w-full">
-                    <div class="absolute -bottom-6 -right-6 bg-indigo-600 p-8 rounded-2xl hidden md:block shadow-2xl">
-                        <p class="text-4xl font-bold text-white">1+</p>
-                        <p class="text-indigo-200 text-sm">Year Experience</p>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="relative max-w-md mx-auto md:max-w-none">
+                    <img src="images/profile.jpg" alt="About Ameer" class="rounded-3xl shadow-2xl w-full">
+                    <div class="absolute -bottom-6 -right-6 bg-indigo-600 p-6 rounded-2xl hidden sm:block shadow-2xl">
+                        <p class="text-4xl font-bold text-white leading-none">1+</p>
+                        <p class="text-indigo-200 text-[10px] uppercase tracking-widest font-bold">Years Exp</p>
                     </div>
                 </div>
-                
-                <div class="space-y-6">
-                    <h2 class="text-indigo-400 font-bold uppercase tracking-widest text-sm">About Me</h2>
-                    <h3 class="text-3xl font-bold text-white leading-tight uppercase">I am available for <span class="text-indigo-400">Full-Stack</span> Development projects</h3>
-                    <p class="text-slate-400 leading-relaxed text-lg">
-                        I am a passionate developer with a keen interest in building efficient and scalable web applications. My mindset is built on constant learning and embracing challenges.
+                <div class="space-y-6 text-center md:text-left">
+                    <h2 class="text-indigo-400 font-bold uppercase tracking-widest text-xs">About Me</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-white uppercase leading-tight">Mastering the <span class="text-indigo-400">Full-Stack</span> Journey</h3>
+                    <p class="text-slate-400 text-base md:text-lg leading-relaxed">
+                        I am a developer who lives at the intersection of design and logic. I turn complex problems into elegant, functional digital solutions.
                     </p>
-                    
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-                        <div class="p-6 bg-slate-800 border border-slate-700 rounded-xl hover:border-indigo-500 transition shadow-lg">
-                            <i class="fas fa-check-circle text-indigo-500 text-3xl mb-3"></i>
-                            <h4 class="font-bold text-white text-2xl">5+</h4>
-                            <p class="text-slate-400 text-sm uppercase tracking-wide">Projects Completed</p>
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div class="p-6 bg-slate-900 border border-white/5 rounded-2xl">
+                            <h4 class="font-bold text-white text-3xl">5+</h4>
+                            <p class="text-slate-500 text-[10px] uppercase tracking-widest font-bold">Projects Done</p>
                         </div>
-                        <div class="p-6 bg-slate-800 border border-slate-700 rounded-xl hover:border-indigo-500 transition shadow-lg">
-                            <i class="fas fa-cogs text-indigo-500 text-3xl mb-3"></i>
-                            <h4 class="font-bold text-white text-2xl">8+</h4>
-                            <p class="text-slate-400 text-sm uppercase tracking-wide">Tech Mastered</p>
+                        <div class="p-6 bg-slate-900 border border-white/5 rounded-2xl">
+                            <h4 class="font-bold text-white text-3xl">8+</h4>
+                            <p class="text-slate-500 text-[10px] uppercase tracking-widest font-bold">Skills Mastered</p>
                         </div>
                     </div>
                 </div>
@@ -165,227 +159,137 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-24">
+    <section id="skills" class="py-20">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <h2 class="text-indigo-400 font-bold uppercase tracking-widest text-sm mb-2">My Skills</h2>
-                <h3 class="text-4xl font-bold text-white">Technologies I Use</h3>
+                <h2 class="text-indigo-400 font-bold uppercase tracking-widest text-xs mb-2">Capabilities</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-white uppercase">The Tech Stack</h3>
             </div>
-            
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="skill-card bg-slate-800/50 border border-slate-700 p-6 rounded-2xl transition-all duration-300 flex flex-col items-center text-center">
-                    <i class="fab fa-html5 text-5xl text-orange-500 mb-4"></i>
-                    <h4 class="text-lg font-bold text-white">HTML5</h4>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6">
+                <div class="skill-card bg-slate-800/30 border border-white/5 p-8 rounded-2xl flex flex-col items-center transition-all">
+                    <i class="fab fa-react text-4xl text-cyan-400 mb-4"></i>
+                    <h4 class="text-white font-bold text-sm tracking-widest uppercase text-center">React / Next</h4>
                 </div>
-                <div class="skill-card bg-slate-800/50 border border-slate-700 p-6 rounded-2xl transition-all duration-300 flex flex-col items-center text-center">
-                    <i class="fab fa-css3-alt text-5xl text-blue-500 mb-4"></i>
-                    <h4 class="text-lg font-bold text-white">CSS3</h4>
+                <div class="skill-card bg-slate-800/30 border border-white/5 p-8 rounded-2xl flex flex-col items-center transition-all">
+                    <i class="fab fa-js text-4xl text-yellow-400 mb-4"></i>
+                    <h4 class="text-white font-bold text-sm tracking-widest uppercase text-center">JavaScript</h4>
                 </div>
-                <div class="skill-card bg-slate-800/50 border border-slate-700 p-6 rounded-2xl transition-all duration-300 flex flex-col items-center text-center">
-                    <i class="fab fa-js text-5xl text-yellow-400 mb-4"></i>
-                    <h4 class="text-lg font-bold text-white">JavaScript</h4>
+                <div class="skill-card bg-slate-800/30 border border-white/5 p-8 rounded-2xl flex flex-col items-center transition-all">
+                    <i class="fab fa-python text-4xl text-blue-400 mb-4"></i>
+                    <h4 class="text-white font-bold text-sm tracking-widest uppercase text-center">Python</h4>
                 </div>
-                <div class="skill-card bg-slate-800/50 border border-slate-700 p-6 rounded-2xl transition-all duration-300 flex flex-col items-center text-center">
-                    <i class="fab fa-react text-5xl text-cyan-400 mb-4"></i>
-                    <h4 class="text-lg font-bold text-white">React / Next</h4>
-                </div>
-                <div class="skill-card bg-slate-800/50 border border-slate-700 p-6 rounded-2xl transition-all duration-300 flex flex-col items-center text-center">
-                    <i class="fab fa-python text-5xl text-blue-400 mb-4"></i>
-                    <h4 class="text-lg font-bold text-white">Python</h4>
-                </div>
-                <div class="skill-card bg-slate-800/50 border border-slate-700 p-6 rounded-2xl transition-all duration-300 flex flex-col items-center text-center">
-                    <span class="text-5xl block mb-4 font-bold text-white">🅓</span>
-                    <h4 class="text-lg font-bold text-white">Django</h4>
-                </div>
-                <div class="skill-card bg-slate-800/50 border border-slate-700 p-6 rounded-2xl transition-all duration-300 flex flex-col items-center text-center">
-                    <i class="fab fa-git-alt text-5xl text-red-500 mb-4"></i>
-                    <h4 class="text-lg font-bold text-white">Git</h4>
-                </div>
-                <div class="skill-card bg-slate-800/50 border border-slate-700 p-6 rounded-2xl transition-all duration-300 flex flex-col items-center text-center">
-                    <i class="fas fa-code text-5xl text-indigo-400 mb-4"></i>
-                    <h4 class="text-lg font-bold text-white">Tailwind</h4>
+                <div class="skill-card bg-slate-800/30 border border-white/5 p-8 rounded-2xl flex flex-col items-center transition-all">
+                    <i class="fas fa-database text-4xl text-indigo-400 mb-4"></i>
+                    <h4 class="text-white font-bold text-sm tracking-widest uppercase text-center">Django</h4>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-24 bg-slate-800/30">
+    <section id="projects" class="py-20 bg-slate-800/20">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-                <div>
-                    <h2 class="text-indigo-400 font-bold uppercase tracking-widest text-sm">Portfolio</h2>
-                    <h3 class="text-4xl font-bold text-white">Recent Projects</h3>
-                </div>
-                <p class="text-slate-400 max-w-md">Highlighting some of my best work in web design and app development.</p>
+            <div class="text-center md:text-left mb-12">
+                <h2 class="text-indigo-400 font-bold uppercase tracking-widest text-xs mb-2">Recent Works</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-white uppercase">Selected Projects</h3>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Project 1: Real Estate -->
-                <a href="https://atobatelehome-properties-capstone-pro-atobatele-ameers-projects.vercel.app" target="_blank" class="project-card group bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 transition-all duration-300 shadow-lg hover:border-indigo-500">
-                    <div class="overflow-hidden h-64"><img src="images/estateimage.png" alt="Real Estate Project" class="w-full h-full object-cover transition duration-500 group-hover:scale-105"></div>
-                    <div class="p-8">
-                        <div class="flex justify-between items-start mb-2"><h4 class="text-2xl font-bold text-white group-hover:text-indigo-400 transition">Real Estate Platform</h4><i class="fas fa-home text-indigo-400"></i></div>
-                        <p class="text-slate-400 text-sm leading-relaxed">A modern responsive real estate website for property listings and user browsing experience.</p>
-                        <div class="mt-4 flex flex-wrap gap-2"><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">React</span><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">JavaScript</span><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Tailwind</span></div>
-                        <div class="mt-6 flex items-center text-indigo-400 text-sm font-bold uppercase tracking-widest">View Project <i class="fas fa-arrow-right ml-2 text-xs"></i></div>
-                    </div>
+                <!-- Project 1 -->
+                <a href="https://atobatelehome-properties-capstone-pro-atobatele-ameers-projects.vercel.app" target="_blank" class="project-card group bg-slate-900 rounded-3xl overflow-hidden border border-white/5 transition shadow-xl hover:border-indigo-500">
+                    <div class="aspect-video overflow-hidden"><img src="images/estateimage.png" class="w-full h-full object-cover transition duration-500"></div>
+                    <div class="p-8"><h4 class="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-indigo-400 transition">Real Estate Platform</h4><p class="text-slate-400 text-sm mb-6">Property listing application with advanced search and responsive design.</p><div class="flex items-center text-indigo-400 text-xs font-bold uppercase tracking-widest">Explore Project <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-2"></i></div></div>
                 </a>
-
-                <!-- Project 2: Makeup Booking -->
-                <a href="https://haus-of-aura.com/" target="_blank" class="project-card group bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 transition-all duration-300 shadow-lg hover:border-indigo-500">
-                    <div class="overflow-hidden h-64"><img src="images/makeup-booking.png" alt="Makeup Booking" class="w-full h-full object-cover transition duration-500 group-hover:scale-105"></div>
-                    <div class="p-8">
-                        <div class="flex justify-between items-start mb-2"><h4 class="text-2xl font-bold text-white group-hover:text-indigo-400 transition">Makeup Booking System</h4><i class="fas fa-calendar-check text-indigo-400"></i></div>
-                        <p class="text-slate-400 text-sm leading-relaxed">Full-stack booking platform with email notifications, automated receipts, and appointment scheduling.</p>
-                        <div class="mt-4 flex flex-wrap gap-2"><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">React</span><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Node.js</span><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Resend API</span></div>
-                        <div class="mt-6 flex items-center text-indigo-400 text-sm font-bold uppercase tracking-widest">View Platform <i class="fas fa-arrow-right ml-2 text-xs"></i></div>
-                    </div>
+                <!-- Project 2 -->
+                <a href="https://haus-of-aura.com/" target="_blank" class="project-card group bg-slate-900 rounded-3xl overflow-hidden border border-white/5 transition shadow-xl hover:border-indigo-500">
+                    <div class="aspect-video overflow-hidden"><img src="images/makeup-booking.png" class="w-full h-full object-cover transition duration-500"></div>
+                    <div class="p-8"><h4 class="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-indigo-400 transition">Makeup Booking</h4><p class="text-slate-400 text-sm mb-6">Full-stack service booking with automated confirmation emails.</p><div class="flex items-center text-indigo-400 text-xs font-bold uppercase tracking-widest">Explore Project <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-2"></i></div></div>
                 </a>
-
-                <!-- Project 3: Henna Design -->
-                <a href="https://sammyhennadesign.onrender.com/" target="_blank" class="project-card group bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 transition-all duration-300 shadow-lg hover:border-indigo-500">
-                    <div class="overflow-hidden h-64"><img src="images/sammy.png" alt="Henna Booking Website" class="w-full h-full object-cover transition duration-500 group-hover:scale-105"></div>
-                    <div class="p-8">
-                        <div class="flex justify-between items-start mb-2"><h4 class="text-2xl font-bold text-white group-hover:text-indigo-400 transition">Henna Booking Website</h4><i class="fas fa-hand-sparkles text-indigo-400"></i></div>
-                        <p class="text-slate-400 text-sm leading-relaxed">A modern booking system where clients schedule henna appointments via WhatsApp integration.</p>
-                        <div class="mt-4 flex flex-wrap gap-2"><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">React</span><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Node.js</span><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">JavaScript</span></div>
-                        <div class="mt-6 flex items-center text-indigo-400 text-sm font-bold uppercase tracking-widest">View Platform <i class="fas fa-arrow-right ml-2 text-xs"></i></div>
-                    </div>
+                <!-- Project 3 -->
+                <a href="https://sammyhennadesign.onrender.com/" target="_blank" class="project-card group bg-slate-900 rounded-3xl overflow-hidden border border-white/5 transition shadow-xl hover:border-indigo-500">
+                    <div class="aspect-video overflow-hidden"><img src="images/sammy.png" class="w-full h-full object-cover transition duration-500"></div>
+                    <div class="p-8"><h4 class="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-indigo-400 transition">Henna Design</h4><p class="text-slate-400 text-sm mb-6">Elegant booking portal with integrated WhatsApp communication.</p><div class="flex items-center text-indigo-400 text-xs font-bold uppercase tracking-widest">Explore Project <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-2"></i></div></div>
                 </a>
-
-                <!-- Project 4: LUMINA -->
-                <a href="https://lumina-1-mnrq.onrender.com/" target="_blank" class="project-card group bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 transition-all duration-300 shadow-lg hover:border-indigo-500">
-                    <div class="overflow-hidden h-64"><img src="images/lumina-movie.png" alt="Lumina Movie App" class="w-full h-full object-cover transition duration-500 group-hover:scale-105"></div>
-                    <div class="p-8">
-                        <div class="flex justify-between items-start mb-2"><h4 class="text-2xl font-bold text-white group-hover:text-indigo-400 transition">Lumina Movie Streaming</h4><i class="fas fa-film text-indigo-400"></i></div>
-                        <p class="text-slate-400 text-sm leading-relaxed">Full-stack movie streaming platform with admin dashboard, uploads, and Cloudinary media handling.</p>
-                        <div class="mt-4 flex flex-wrap gap-2"><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">React</span><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Node.js</span><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">MongoDB</span></div>
-                        <div class="mt-6 flex items-center text-indigo-400 text-sm font-bold uppercase tracking-widest">View App <i class="fas fa-arrow-right ml-2 text-xs"></i></div>
-                    </div>
+                <!-- Project 4 -->
+                <a href="https://lumina-1-mnrq.onrender.com/" target="_blank" class="project-card group bg-slate-900 rounded-3xl overflow-hidden border border-white/5 transition shadow-xl hover:border-indigo-500">
+                    <div class="aspect-video overflow-hidden"><img src="images/lumina-movie.png" class="w-full h-full object-cover transition duration-500"></div>
+                    <div class="p-8"><h4 class="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-indigo-400 transition">Lumina Movie App</h4><p class="text-slate-400 text-sm mb-6">Streaming platform with secure admin panel and media uploads.</p><div class="flex items-center text-indigo-400 text-xs font-bold uppercase tracking-widest">Explore Project <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-2"></i></div></div>
                 </a>
-
-                <!-- Project 5: Therapy Clinic -->
-                <a href="https://www.gsnaturopathyandphysicaltherapyclinic.com/" target="_blank" class="project-card group bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 transition-all duration-300 shadow-lg hover:border-indigo-500">
-                    <div class="overflow-hidden h-64"><img src="images/therapy.png" alt="Therapy Website" class="w-full h-full object-cover transition duration-500 group-hover:scale-105"></div>
-                    <div class="p-8">
-                        <div class="flex justify-between items-start mb-2"><h4 class="text-2xl font-bold text-white group-hover:text-indigo-400 transition">Therapy Booking Website</h4><i class="fas fa-user-md text-indigo-400"></i></div>
-                        <p class="text-slate-400 text-sm leading-relaxed">A professional therapy clinic platform where patients book appointments and manage sessions online.</p>
-                        <div class="mt-4 flex flex-wrap gap-2"><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">React</span><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">Node.js</span><span class="text-xs bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full">JavaScript</span></div>
-                        <div class="mt-6 flex items-center text-indigo-400 text-sm font-bold uppercase tracking-widest">View Website <i class="fas fa-arrow-right ml-2 text-xs"></i></div>
-                    </div>
+                <!-- Project 5 -->
+                <a href="https://www.gsnaturopathyandphysicaltherapyclinic.com/" target="_blank" class="project-card group bg-slate-900 rounded-3xl overflow-hidden border border-white/5 transition shadow-xl hover:border-indigo-500">
+                    <div class="aspect-video overflow-hidden"><img src="images/therapy.png" class="w-full h-full object-cover transition duration-500"></div>
+                    <div class="p-8"><h4 class="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-indigo-400 transition">Therapy Clinic</h4><p class="text-slate-400 text-sm mb-6">Medical clinic management and appointment system.</p><div class="flex items-center text-indigo-400 text-xs font-bold uppercase tracking-widest">Explore Project <i class="fas fa-arrow-right ml-2 transition-transform group-hover:translate-x-2"></i></div></div>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Updated Restyled Footer Section -->
-    <footer id="contact" class="relative bg-slate-950 pt-20 pb-10 overflow-hidden mt-32">
-        
-        <!-- Background: Cyber Glow -->
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-indigo-600/10 blur-[120px] rounded-full pointer-events-none"></div>
+    <!-- Footer Section -->
+    <footer id="contact" class="relative bg-slate-950 pt-20 pb-10 overflow-hidden mt-20">
+        <!-- Glow BG -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1000px] h-[400px] bg-indigo-600/10 blur-[120px] rounded-full pointer-events-none"></div>
 
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            
-            <!-- Main Glass Card -->
-            <div class="relative bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-8 md:p-16 overflow-hidden">
-                
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    
-                    <!-- Left Side: Status & Heading -->
-                    <div>
-                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-widest mb-6">
-                            <span class="relative flex h-2 w-2">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                            </span>
-                            Available for new projects
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+            <!-- Glass Card -->
+            <div class="relative bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-16 overflow-hidden">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-[10px] font-bold uppercase tracking-widest mb-6">
+                            <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span></span> Available for projects
                         </div>
-
-                        <h3 class="text-5xl md:text-7xl font-black text-white leading-[0.9] tracking-tighter uppercase italic">
-                            Let's build <br> something <span class="text-indigo-500 not-italic">iconic.</span>
-                        </h3>
+                        <h3 class="text-4xl sm:text-5xl md:text-7xl font-black text-white leading-[1.1] uppercase italic tracking-tighter">Let's build <br> something <span class="text-indigo-500 not-italic">iconic.</span></h3>
                     </div>
-
-                    <!-- Right Side: CTA -->
-                    <div class="flex flex-col gap-8">
-                        <p class="text-slate-400 text-lg md:text-xl max-w-md leading-relaxed">
-                            I’m currently looking for new opportunities and collaborations. If you have a project in mind, let's make it happen.
-                        </p>
-
-                        <div class="group relative self-start">
+                    <div class="flex flex-col items-center lg:items-start gap-8">
+                        <p class="text-slate-400 text-base md:text-xl max-w-md text-center lg:text-left leading-relaxed">Ready to take your digital presence to the next level? Drop me an email.</p>
+                        
+                        <!-- EMAIL BUTTON - FIXED FOR MOBILE OVERFLOW -->
+                        <div class="group relative w-full sm:w-auto">
                             <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl blur opacity-30 group-hover:opacity-100 transition duration-500"></div>
-                            <a href="mailto:atobateleameer204@gmail.com" 
-                               class="relative flex items-center gap-4 bg-slate-900 border border-white/10 px-8 py-5 rounded-2xl text-white font-bold text-lg md:text-xl hover:bg-slate-800 transition-all">
-                                <span>atobateleameer204@gmail.com</span>
-                                <i class="fas fa-arrow-right -rotate-45 group-hover:rotate-0 transition-transform"></i>
+                            <a href="mailto:atobateleameer204@gmail.com" class="relative flex items-center justify-between gap-3 bg-slate-900 border border-white/10 px-4 md:px-8 py-5 rounded-2xl text-white font-bold transition hover:bg-slate-800 w-full">
+                                <span class="text-[12px] xs:text-sm sm:text-base md:text-xl break-all">atobateleameer204@gmail.com</span>
+                                <i class="fas fa-arrow-right -rotate-45 group-hover:rotate-0 transition-transform shrink-0"></i>
                             </a>
                         </div>
                     </div>
                 </div>
-
-                <!-- Bottom Row: Socials & Details -->
-                <div class="mt-16 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-                    
-                    <div class="flex items-center gap-3">
-                        <a href="https://www.linkedin.com/in/atobatele-ameer-743a91312" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-indigo-600 transition-all duration-300">
-                            <i class="fab fa-linkedin-in text-lg"></i>
-                        </a>
-                        <a href="https://github.com/ameer112-746dgd" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-indigo-600 transition-all duration-300">
-                            <i class="fab fa-github text-lg"></i>
-                        </a>
-                        <a href="https://twitter.com/132DdIGITALGUY" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-indigo-600 transition-all duration-300">
-                            <i class="fab fa-twitter text-lg"></i>
-                        </a>
-                        <a href="https://www.facebook.com/d.digital.guy" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-indigo-600 transition-all duration-300">
-                            <i class="fab fa-facebook-f text-lg"></i>
-                        </a>
+                <div class="mt-16 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+                    <div class="flex gap-4">
+                        <a href="https://github.com/ameer112-746dgd" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-indigo-600 transition-all"><i class="fab fa-github text-xl"></i></a>
+                        <a href="https://www.linkedin.com/in/atobatele-ameer-743a91312" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-indigo-600 transition-all"><i class="fab fa-linkedin-in text-xl"></i></a>
+                        <a href="https://twitter.com/132DdIGITALGUY" target="_blank" class="w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-indigo-600 transition-all"><i class="fab fa-twitter text-xl"></i></a>
                     </div>
-
-                    <div class="text-right">
-                        <p class="text-xs font-medium uppercase tracking-[0.3em] text-slate-500 mb-1">
-                            © <span id="year"></span> Ameer. Portfolio
-                        </p>
-                        <p class="text-[10px] text-slate-700 uppercase tracking-widest font-bold">
-                            Lagos, NG — 6°27' N 3°23' E
-                        </p>
+                    <div class="md:text-right">
+                        <p class="text-[10px] font-medium uppercase tracking-[0.3em] text-slate-500">© <span id="year"></span> Ameer. Portfolio</p>
+                        <p class="text-[10px] text-slate-700 uppercase tracking-widest font-bold mt-1">Lagos, NG — 6°27' N 3°23' E</p>
                     </div>
                 </div>
             </div>
-
-            <!-- Functional Back to Top Button -->
-            <div class="mt-8 text-center">
-                <a href="#home" class="inline-block text-[10px] text-slate-700 uppercase tracking-[0.5em] hover:text-indigo-400 transition-colors cursor-pointer">
-                    Back to top ↑
-                </a>
-            </div>
+            <div class="mt-8 text-center pb-8"><a href="#home" class="inline-block text-[10px] text-slate-700 uppercase tracking-widest hover:text-indigo-400 transition">Back to top ↑</a></div>
         </div>
     </footer>
 
     <script>
-        // Update Year
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Mobile Menu
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         const menuIcon = document.getElementById('menu-icon');
 
         menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            if (mobileMenu.classList.contains('hidden')) {
-                menuIcon.classList.replace('fa-times', 'fa-bars');
-            } else {
+            mobileMenu.classList.toggle('active');
+            menuIcon.classList.toggle('rotate-icon');
+            if (mobileMenu.classList.contains('active')) {
                 menuIcon.classList.replace('fa-bars', 'fa-times');
+            } else {
+                menuIcon.classList.replace('fa-times', 'fa-bars');
             }
         });
 
-        // Close mobile menu on link click
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => {
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('active');
                 menuIcon.classList.replace('fa-times', 'fa-bars');
+                menuIcon.classList.remove('rotate-icon');
             });
         });
     </script>
